@@ -1,0 +1,74 @@
+{
+  "Nodes": [
+    {
+      "Name": "onRoutBc",
+      "Group": "application"
+    },
+    {
+      "Name": "Postgres",
+      "Group": "database"
+    },
+    {
+      "Name": "React",
+      "Group": "frontend"
+    },
+    {
+      "Name": "Nest.js",
+      "Group": "backend"
+    },
+    {
+      "Name": "CMS",
+      "Group": "api"
+    },
+    {
+      "Name": "CDOGS",
+      "Group": "api"
+    },
+    {
+      "Name": "CHES",
+      "Group": "api"
+    },
+    {
+      "Name": "OpenShift",
+      "Group": "host"
+    },
+    {
+      "Name": "GitHub Action",
+      "Group": "cicd"
+    },
+
+    {
+      "Name": "HETS",
+      "Group": "application"
+    },
+    {
+      "Name": "ASP.NET",
+      "Group": "backend"
+    },
+
+    {
+      "Name": "HMCR",
+      "Group": "application"
+    },
+    {
+      "Name": "CRT",
+      "Group": "application"
+    },
+    {
+      "Name": "Schoolbus",
+      "Group": "application"
+    },
+    {
+      "Name": "Transaction",
+      "Group": "application"
+    },
+
+    {
+      "Name": "MSSQL",
+      "Group": "database"
+    }
+
+  ]
+}
+  
+  

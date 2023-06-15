@@ -1,0 +1,66 @@
+{
+    "nodes": [
+      {"Id": "onRoutBc", "Group": "application"},
+      {"Id": "Postgres", "Group": "database"},
+      {"Id": "React", "Group": "frontend"},
+      {"Id": "Nest.js", "Group": "backend"},
+      {"Id": "CMS", "Group": "api"},
+      {"Id": "CDOGS", "Group": "api"},
+      {"Id": "CHES", "Group": "api"},
+      {"Id": "OpenShift", "Group": "host"},
+      {"Id": "GitHub Action", "Group": "cicd"},
+
+      {"Id": "HETS", "Group": "application"},
+      {"Id": "ASP.NET", "Group": "backend"},
+
+      {"Id": "HMCR", "Group": "application"},
+      {"Id": "CRT", "Group": "application"},
+      {"Id": "Schoolbus", "Group": "application"},
+      {"Id": "Transaction", "Group": "application"},
+
+      {"Id": "MSSQL", "Group": "database"}
+
+    ],
+    "links": [
+      {"source": "onRoutBc", "target": "Postgres", "value": 1},
+      {"source": "onRoutBc", "target": "React", "value": 8},
+      {"source": "onRoutBc", "target": "Nest.js", "value": 8},
+      {"source": "onRoutBc", "target": "CMS", "value": 8},
+      {"source": "onRoutBc", "target": "CDOGS", "value": 8},
+      {"source": "onRoutBc", "target": "CHES", "value": 8},
+      {"source": "Postgres", "target": "OpenShift", "value": 10},
+      {"source": "CMS", "target": "OpenShift", "value": 10},
+      {"source": "CHES", "target": "OpenShift", "value": 10},
+      {"source": "onRoutBc", "target": "GitHub Action", "value": 5},
+      {"source": "onRoutBc", "target": "OpenShift", "value": 5},
+
+      {"source": "HETS", "target": "Postgres", "value": 1},
+      {"source": "HETS", "target": "React", "value": 8},
+      {"source": "HETS", "target": "ASP.NET", "value": 8},
+      {"source": "HETS", "target": "GitHub Action", "value": 5},
+      {"source": "HETS", "target": "OpenShift", "value": 5},
+
+      {"source": "HMCR", "target": "MSSQL", "value": 1},
+      {"source": "HMCR", "target": "React", "value": 8},
+      {"source": "HMCR", "target": "ASP.NET", "value": 8},
+      {"source": "HMCR", "target": "GitHub Action", "value": 5},
+      {"source": "HMCR", "target": "OpenShift", "value": 5},
+
+      {"source": "CRT", "target": "MSSQL", "value": 1},
+      {"source": "CRT", "target": "React", "value": 8},
+      {"source": "CRT", "target": "ASP.NET", "value": 8},
+      {"source": "CRT", "target": "GitHub Action", "value": 5},
+      {"source": "CRT", "target": "OpenShift", "value": 5},
+
+      {"source": "Schoolbus", "target": "Postgres", "value": 1},
+      {"source": "Schoolbus", "target": "React", "value": 8},
+      {"source": "Schoolbus", "target": "ASP.NET", "value": 8},
+      {"source": "Schoolbus", "target": "GitHub Action", "value": 5},
+      {"source": "Schoolbus", "target": "OpenShift", "value": 5},
+
+      {"source": "Transaction", "target": "React", "value": 8},
+      {"source": "Transaction", "target": "ASP.NET", "value": 8},
+      {"source": "Transaction", "target": "GitHub Action", "value": 5},
+      {"source": "Transaction", "target": "OpenShift", "value": 5}
+    ]
+  }
