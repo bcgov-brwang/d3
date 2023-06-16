@@ -28,7 +28,7 @@ const Application = () => {
     const fetchData = async () => {
       try {
         // const response = await fetch('https://localhost:44339/weatherforecast/data');
-        const response = await fetch('https://localhost:44339/api/applications');
+        const response = await fetch('https://localhost:44339/api/applications/testchart');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

@@ -1,0 +1,19 @@
+{
+    "Name": "OnRouteBc",
+    "Database": [ "Postgres" ],
+    "FrontendFramework": [ "React" ],
+    "FrontendLanguage": [ "JavaScript" ],
+    "BackendFramework": [ "Nest.js" ],
+    "BackendLanguage": [ "JavaScript" ],
+    "HostType": [ "OpenShift" ],
+    "CicdType": [ "GitHub Action" ],
+    "ExternalApis": [ "CMS", "CDOGS", "CHES" ],
+    "ExposedApis": [ ],
+    "StakeHolders": [ "Terrian W", "Michael Joan" ],
+    "TechContacts": [ "Bruce Wang" ],
+    "ReleaseDate": [ "2024-09-09" ],
+    "HostServers": [ "http://dev-orbc.th.gov.bc.ca", "http://tst-orbc.th.gov.bc.ca", "http://orbc.th.gov.bc.ca" ],
+    "DatabaseServers": [ "sqlprod.th.gov.bc.ca" ],
+    "CurrentVersion": "1.0.0"
+  }
+  

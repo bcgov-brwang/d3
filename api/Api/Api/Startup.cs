@@ -41,6 +41,8 @@ namespace Api
 
             // Add MongoDB Context for Dependency Injection
             services.AddSingleton<MongoDbContext>(sp => new MongoDbContext(Configuration));
+            services.AddSingleton<StringArraySerializer>();
+
 
         }
 

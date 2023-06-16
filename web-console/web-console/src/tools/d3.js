@@ -61,7 +61,17 @@ const loadData = (data) => {
 
 
 
-        
+        // Attach click event listener to nodes
+        node.on('click', function(d) {
+          // Get the URL you want to navigate to based on the clicked node
+          var url = "https://google.com";//d.url; // Assuming you have a 'url' property in your node data
+
+          // Perform the navigation
+            // Get the text content of the <title> element
+          var titleText = d3.select(this).select('title').text();
+          // alert(titleText);
+          window.location.href = `/documents?name=${titleText}`;
+        });
 
         // Add a drag behavior.
         node.call(d3.drag()
@@ -88,6 +98,7 @@ const loadData = (data) => {
             node
                 .attr("cx", d => d.x)
                 .attr("cy", d => d.y);
+            
         }
 
         // Reheat the simulation when drag starts, and fix the subject position.
