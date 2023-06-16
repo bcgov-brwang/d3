@@ -18,7 +18,7 @@ const Application = () => {
 
   const legendStyles = {
         marginLeft: '80px',
-        marginTop: '150px',
+        marginTop: '350px',
       };
 
   const chartRef = useRef(null);
@@ -48,7 +48,7 @@ const Application = () => {
   return (
     <div>
         {/* <h1>Application Details</h1> */}
-        <div id="legend" style={legendStyles}><h3>Legend</h3></div>
+        <div id="legend" style={legendStyles}><h4>Legend</h4></div>
         <svg width="960" height="600"></svg>
     </div>
   );
