@@ -43,23 +43,23 @@ namespace Api.Controllers
             return new Application
             {
                 Nodes = new List<Node> { 
-                    new Node{ Id = "onRoutBc", Group = "Application"},
-                    new Node{ Id = "HETS", Group = "Application"},
-                    new Node{ Id = "CRT", Group = "Application"},
-                    new Node{ Id = "HMCR", Group = "Application"},
-                    new Node{ Id = "Schoolbus", Group = "Application"},
-                    new Node{ Id = "Transaction", Group = "Application"},
-                    new Node{ Id = "Postgres", Group = "Database"},
-                    new Node{ Id = "MSSQL", Group = "Database"},
-                    new Node{ Id = "React", Group = "Frontend Framework"},
-                    new Node{ Id = "Nest.js", Group = "Backend Framework"},
-                    new Node{ Id = "ASP.NET Core", Group = "Backend Framework"},
-                    new Node{ Id = "CMS", Group = "API"},
-                    new Node{ Id = "CDOGS", Group = "API"},
-                    new Node{ Id = "CHES", Group = "API"},
-                    new Node{ Id = "twm", Group = "API"},
-                    new Node{ Id = "OpenShift", Group = "Host"},
-                    new Node{ Id = "GitHub Action", Group = "CICD"}
+                    new Node{ Id = "onRoutBc", Name = "onRoutBc", Group = "Application"},
+                    new Node{ Id = "HETS", Name = "HETS", Group = "Application"},
+                    new Node{ Id = "CRT", Name = "CRT", Group = "Application"},
+                    new Node{ Id = "HMCR", Name = "HMCR", Group = "Application"},
+                    new Node{ Id = "Schoolbus", Name = "Schoolbus", Group = "Application"},
+                    new Node{ Id = "Transaction", Name = "Transaction", Group = "Application"},
+                    new Node{ Id = "Postgres", Name = "Postgres", Group = "Database"},
+                    new Node{ Id = "MSSQL", Name = "MSSQL", Group = "Database"},
+                    new Node{ Id = "React", Name = "React", Group = "Frontend Framework"},
+                    new Node{ Id = "Nest.js", Name = "Nest.js", Group = "Backend Framework"},
+                    new Node{ Id = "ASP.NET Core", Name = "ASP.NET Core", Group = "Backend Framework"},
+                    new Node{ Id = "CMS", Name = "CMS", Group = "API"},
+                    new Node{ Id = "CDOGS", Name = "CDOGS", Group = "API"},
+                    new Node{ Id = "CHES", Name = "CHES", Group = "API"},
+                    new Node{ Id = "twm", Name = "twm", Group = "API"},
+                    new Node{ Id = "OpenShift", Name = "OpenShift", Group = "Host"},
+                    new Node{ Id = "GitHub Action", Name = "GitHub Action", Group = "CICD"}
                 
                 },
                 Links = new List<Link> { 

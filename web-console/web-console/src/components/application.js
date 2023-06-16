@@ -11,13 +11,14 @@
 
 import React, {useState, useEffect, useRef } from 'react';
 import loadData from "../tools/d3.js";
+import "../css/site.css"
 
 const Application = () => {
 
 
   const legendStyles = {
         marginLeft: '80px',
-        marginTop: '350px',
+        marginTop: '150px',
       };
 
   const chartRef = useRef(null);
@@ -27,8 +28,8 @@ const Application = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await fetch('https://localhost:44339/weatherforecast/data');
-        const response = await fetch('https://localhost:44339/api/applications/testchart');
+        const response = await fetch('https://localhost:44339/weatherforecast/data');
+        // const response = await fetch('https://localhost:44339/api/applications/testchart');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -48,7 +49,7 @@ const Application = () => {
     <div>
         {/* <h1>Application Details</h1> */}
         <div id="legend" style={legendStyles}><h3>Legend</h3></div>
-        <div id="chart"></div>
+        <svg width="960" height="600"></svg>
     </div>
   );
 };
