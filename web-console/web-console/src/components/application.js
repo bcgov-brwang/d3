@@ -21,7 +21,7 @@ const Application = () => {
 
   const legendStyles = {
         marginLeft: '80px',
-        marginTop: '350px',
+        marginTop: '250px',
       };
 
   const chartRef = useRef(null);
