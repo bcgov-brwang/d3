@@ -16,8 +16,8 @@ const DocumentsComponent = () => {
   useEffect(() => {
     const fetchApplicationDetails = async () => {
       try {
-        const url = "https://localhost:44339/api/applications/details";
-        const response = await fetch('your-backend-api-url');
+        const url = `https://localhost:44339/api/applications/details?name=${name}`;
+        const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
           setApplication(data);

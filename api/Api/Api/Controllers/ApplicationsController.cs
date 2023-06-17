@@ -54,7 +54,10 @@ namespace Api.Controllers
             return Ok(applications);
         }
 
-        [HttpGet("{name}")]
+        //[HttpGet("{name}")]
+        //[Route("details")]
+        // GET api/applications/details?name=OnRouteBc
+        [HttpGet("details")]
         public ActionResult<ApplicationDetails> GetApplicationByName(string name)
         {
             var application = _applicationsCollection.Find(b => b.Name == name).FirstOrDefault();
