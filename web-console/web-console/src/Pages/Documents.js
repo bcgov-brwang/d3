@@ -43,10 +43,24 @@ const DocumentsComponent = () => {
   }
 
   return (
-    <div>
-      <h1>{application.name}</h1>
-      <p>{application.description}</p>
-      {/* Render other application details here */}
+    <div className="scroll-panel">
+      <h4>{application.name} details</h4>
+      <p>Name: {application.name}</p>
+      <p>Database: {application.database}</p>
+      <p>Frontend Framework: {application.frontendFramework}</p>
+      <p>Frontend Language: {application.frontendLanguage}</p>
+      <p>Backend Framework: {application.backendFramework}</p>
+      <p>Backend Language: {application.backendLanguage}</p>
+      <p>Host Type: {application.hostType}</p>
+      <p>CICD Type: {application.cicdType}</p>
+      <p>External APIs: {application.externalApis}</p>
+      <p>Exposed APIs: {application.exposedApis}</p>
+      <p>Stakeholders: {application.stakeholders}</p>
+      <p>Tech Contacts: {application.techContacts}</p>
+      <p>Release Date: {application.releaseDate}</p>
+      <p>Host Servers: {application.hostServers}</p>
+      <p>Database Servers: {application.databaseServers}</p>
+      <p>Current Version: {application.currentVersion}</p>
     </div>
   );
   
