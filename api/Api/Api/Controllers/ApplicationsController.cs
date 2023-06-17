@@ -36,6 +36,11 @@ namespace Api.Controllers
             var nodes = _nodesCollection.Find(FilterDefinition<Node>.Empty).ToList();
             var links = _linksCollection.Find(FilterDefinition<Link>.Empty).ToList();
 
+            foreach (var node in nodes)
+            {
+                node.Id = node.Name;
+            }
+
             result = new Application { Nodes = nodes, Links = links };
 
             return result;

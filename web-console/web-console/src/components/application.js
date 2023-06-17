@@ -28,8 +28,10 @@ const Application = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://localhost:44339/weatherforecast/data');
-        // const response = await fetch('https://localhost:44339/api/applications/testchart');
+        //get json object
+        // const response = await fetch('https://localhost:44339/weatherforecast/data');
+        //get data from db
+        const response = await fetch('https://localhost:44339/api/applications/testchart');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

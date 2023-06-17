@@ -12,3 +12,49 @@
     font-family: sans-serif;
     font-size: 10px;
   }
+
+  .form-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .scroll-panel .form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .scroll-panel .form-container button:hover {
+    background-color: #45a049;
+  }
+
+  .scroll-panel {
+    max-height: 300px; /* Adjust the height as needed */
+    overflow: auto;
+    padding-right: 10px; /* Add right padding to account for the scrollbar */
+  }
+  
+  /* Rest of the styles from the previous example... */
+  
+  
