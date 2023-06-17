@@ -1,5 +1,5 @@
 import MotionHoc from "./MotionHoc";
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory} from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 
 const DocumentsComponent = () => {
@@ -12,6 +12,15 @@ const DocumentsComponent = () => {
 
   const [application, setApplication] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    // Perform any necessary actions before navigation
+
+    // Navigate to the other page
+    history.push(`/specific/${name}`);
+  };
 
   useEffect(() => {
     const fetchApplicationDetails = async () => {
@@ -45,6 +54,7 @@ const DocumentsComponent = () => {
   return (
     <div className="scroll-panel">
       <h4>{application.name} details</h4>
+      <button onClick={handleClick}>Go to Chart</button>
       <p>Name: {application.name}</p>
       <p>Database: {application.database}</p>
       <p>Frontend Framework: {application.frontendFramework}</p>

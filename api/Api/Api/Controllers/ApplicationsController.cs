@@ -28,9 +28,9 @@ namespace Api.Controllers
             _applicationsCollection = dbContext.Database.GetCollection<ApplicationDetails>("Applications");
         }
 
-        [HttpGet]
-        [Route("TestChart")]
-        public Application Get()
+        [HttpGet("Chart")]
+        //[Route("Chart")]
+        public Application Get(string name)
         {
             Application result = null;
             var nodes = _nodesCollection.Find(FilterDefinition<Node>.Empty).ToList();
@@ -41,7 +41,21 @@ namespace Api.Controllers
                 node.Id = node.Name;
             }
 
-            result = new Application { Nodes = nodes, Links = links };
+            
+
+            if (name != null)
+            {
+                var fillteredLinks = links.Where(x => x.Source == name).ToList();
+                var targetNames = links.Where(x => x.Source == name).Select(x => x.Target).ToList();
+                var fillteredNodes = nodes.Where(x => targetNames.Contains(x.Name) || x.Name == name).ToList();
+                result = new Application { Nodes = fillteredNodes, Links = fillteredLinks };
+
+            }
+            else
+            {
+                result = new Application { Nodes = nodes, Links = links };
+
+            }
 
             return result;
             

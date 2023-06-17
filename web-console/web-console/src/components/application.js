@@ -10,10 +10,13 @@
 // export default Application;
 
 import React, {useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 import loadData from "../tools/d3.js";
 import "../css/site.css"
 
 const Application = () => {
+
+  const {name} = useParams();
 
 
   const legendStyles = {
@@ -28,10 +31,20 @@ const Application = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+
+
+        let url = "";
+        if(name === undefined){
+          url = "https://localhost:44339/api/applications/chart";
+        }
+        else{
+          url = `https://localhost:44339/api/applications/chart?name=${name}`;
+        }
+
         //get json object
         // const response = await fetch('https://localhost:44339/weatherforecast/data');
         //get data from db
-        const response = await fetch('https://localhost:44339/api/applications/testchart');
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
