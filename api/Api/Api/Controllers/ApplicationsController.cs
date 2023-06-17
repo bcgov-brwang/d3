@@ -71,6 +71,30 @@ namespace Api.Controllers
         [HttpPost]
         public ActionResult<ApplicationDetails> CreateApplication(ApplicationDetails application)
         {
+            //todo: create nodes and links here
+            //application node
+            //database node
+            Node applicationNode = new Node
+            {
+                Name = application.Name,
+                Group = "Application"
+            };
+            _nodesCollection.InsertOne(applicationNode);
+            //database node
+            Node databaseNode = new Node
+            {
+                Name = application.Database,
+                Group = "Database"
+            };
+            _nodesCollection.InsertOne(databaseNode);
+            Link applicationToDatabaseLink = new Link
+            {
+                Source = application.Name,
+                Target = application.Database,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToDatabaseLink);
+
             _applicationsCollection.InsertOne(application);
             return CreatedAtAction(nameof(GetApplicationByName), new { name = application.Name }, application);
         }

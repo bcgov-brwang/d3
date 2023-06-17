@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ApplicationForm = () => {
+const DatabaseForm = () => {
   const [name, setName] = useState('');
   const [database, setDatabase] = useState('');
   const [frontendFramework, setFrontendFramework] = useState('');
@@ -67,7 +67,7 @@ const ApplicationForm = () => {
 
   return (
     <div>
-      <h1>New Application</h1>
+      <h1>New Database</h1>
       <div className="scroll-panel">
           
 
@@ -213,4 +213,4 @@ const ApplicationForm = () => {
   );
 };
 
-export default ApplicationForm;
+export default DatabaseForm;
