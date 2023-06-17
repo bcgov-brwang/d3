@@ -22,56 +22,56 @@ namespace Api
         public string Name { get; set; }
         //[BsonElement("Database")]
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue Database { get; set; }
+        public string Database { get; set; }
         //[BsonRepresentation(BsonType.Array)]
         //[BsonElement("FrontendFramework")]
 
-        public BsonValue FrontendFramework { get; set; }
+        public string FrontendFramework { get; set; }
         //[BsonElement("FrontendLanguage")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue FrontendLanguage { get; set; }
+        public string FrontendLanguage { get; set; }
         //[BsonElement("BackendFramework")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue BackendFramework { get; set; }
+        public string BackendFramework { get; set; }
         //[BsonElement("BackendLanguage")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue BackendLanguage { get; set; }
+        public string BackendLanguage { get; set; }
         //[BsonElement("HostType")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue HostType { get; set; }
+        public string HostType { get; set; }
         //[BsonElement("CicdType")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue CicdType { get; set; }
+        public string CicdType { get; set; }
         //[BsonElement("ExternalApis")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue ExternalApis { get; set; }
+        public string ExternalApis { get; set; }
         //[BsonElement("ExposedApis")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue ExposedApis { get; set; }
+        public string ExposedApis { get; set; }
         //[BsonElement("StakeHolders")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue StakeHolders { get; set; }
+        public string StakeHolders { get; set; }
         //[BsonElement("TechContacts")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue TechContacts { get; set; }
-        public BsonValue ReleaseDate { get; set; }
+        public string TechContacts { get; set; }
+        public string ReleaseDate { get; set; }
         //[BsonElement("HostServers")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue HostServers { get; set; }
+        public string HostServers { get; set; }
         //[BsonElement("DatabaseServers")]
 
         //[BsonRepresentation(BsonType.Array)]
-        public BsonValue DatabaseServers { get; set; }
+        public string DatabaseServers { get; set; }
         public string CurrentVersion { get; set; }
 
 

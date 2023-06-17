@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
@@ -16,9 +17,11 @@ namespace Api.Controllers
         private readonly IMongoCollection<Node> _nodesCollection;
         private readonly IMongoCollection<Link> _linksCollection;
         private readonly IMongoCollection<ApplicationDetails> _applicationsCollection;
+        private readonly MongoDbContext _mongoDbContext;
 
         public ApplicationsController(MongoDbContext dbContext)
         {
+            _mongoDbContext = dbContext;
             
             _nodesCollection = dbContext.Database.GetCollection<Node>("Nodes");
             _linksCollection = dbContext.Database.GetCollection<Link>("Links");
@@ -65,7 +68,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("{name}")]
-        public IActionResult UpdateApplication(string name, ApplicationDetails updatedApplication)
+        public async Task<IActionResult> UpdateApplicationAsync(string name, ApplicationDetails updatedApplication)
         {
             var application = _applicationsCollection.FindOneAndUpdate(
                 Builders<ApplicationDetails>.Filter.Eq(b => b.Name, name),
@@ -82,8 +85,14 @@ namespace Api.Controllers
             {
                 return NotFound();
             }
+            
+            
+            var filter = Builders<ApplicationDetails>.Filter.Eq("Name", name); // Replace with your document's unique identifier
+            var update = Builders<ApplicationDetails>.Update.Set("Database", updatedApplication.Database); // Replace with the field name and new value
+            var result = _applicationsCollection.UpdateOne(filter, update); // UpdateOne updates a single document matching the filter
+            
 
-            return Ok(application);
+            return Ok(result);
         }
 
         [HttpDelete("{name}")]
