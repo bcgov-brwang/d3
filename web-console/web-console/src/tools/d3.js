@@ -9,9 +9,10 @@ const loadData = (data) => {
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var simulation = d3.forceSimulation()
-  .force("link", d3.forceLink().id(function(d) { return d.id; }))
+  .force("link", d3.forceLink().id(function(d) { return d.id; })
+  .distance(150)) // Set the desired link distance
   .force("charge", d3.forceManyBody())
-  .force("center", d3.forceCenter(width / 4, height / 4));
+  .force("center", d3.forceCenter(width / 3, height / 5));
 
         // Process the JSON data
         // The force simulation mutates links and nodes, so create a copy

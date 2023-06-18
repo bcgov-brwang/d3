@@ -273,7 +273,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.FrontendFramework,
-                Value = 1
+                Value = 2
             };
             _linksCollection.InsertOne(applicationToFrontendFrameworkLink);
 
@@ -282,7 +282,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.FrontendLanguage,
-                Value = 1
+                Value = 3
             };
             _linksCollection.InsertOne(applicationToFrontendLanguageLink);
 
@@ -293,7 +293,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.BackendFramework,
-                Value = 1
+                Value = 4
             };
             _linksCollection.InsertOne(applicationToBackendFrameworkLink);
 
@@ -302,7 +302,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.BackendLanguage,
-                Value = 1
+                Value = 5
             };
             _linksCollection.InsertOne(applicationToBackendLanguageLink);
 
@@ -311,7 +311,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.HostType,
-                Value = 1
+                Value = 6
             };
             _linksCollection.InsertOne(applicationToHostTypeLink);
 
@@ -320,7 +320,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.CicdType,
-                Value = 1
+                Value = 7
             };
             _linksCollection.InsertOne(applicationToCicdTypeLink);
 
@@ -329,7 +329,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.ExternalApis,
-                Value = 1
+                Value = 8
             };
             _linksCollection.InsertOne(applicationToExternalApisLink);
 
@@ -338,7 +338,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.ExposedApis,
-                Value = 1
+                Value = 9
             };
             _linksCollection.InsertOne(applicationToExposedApisLink);
 
@@ -374,7 +374,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.HostServers,
-                Value = 1
+                Value = 10
             };
             _linksCollection.InsertOne(applicationToHostServersLink);
 
@@ -383,7 +383,7 @@ namespace Api.Controllers
             {
                 Source = application.Name,
                 Target = application.DatabaseServers,
-                Value = 1
+                Value = 11
             };
             _linksCollection.InsertOne(applicationToDatabaseServersLink);
 
