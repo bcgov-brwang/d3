@@ -47,6 +47,7 @@ const EditApplicationForm = () => {
         // Optionally, you can fetch the updated application data again
         // to reflect the changes in the UI
         fetchApplicationData();
+        window.location.href = "/";
       } else {
         console.error('Failed to update application');
       }

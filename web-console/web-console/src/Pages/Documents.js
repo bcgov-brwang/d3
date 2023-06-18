@@ -37,6 +37,7 @@ const DocumentsComponent = () => {
         'Content-Type': 'application/json',
       }
     });
+    window.location.href = "/";
   }
   catch (error) {
     console.error('Error deleting application:', error);

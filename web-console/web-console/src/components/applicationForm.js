@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const ApplicationForm = () => {
   const [name, setName] = useState('');
   const [database, setDatabase] = useState('');
@@ -56,6 +57,8 @@ const ApplicationForm = () => {
       if (response.ok) {
         // Application submitted successfully
         console.log('Application submitted!');
+        window.location.href = "/";
+        
       } else {
         // Handle the error if the submission fails
         console.error('Application submission failed.');
