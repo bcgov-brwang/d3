@@ -100,7 +100,10 @@ namespace Api.Controllers
                 Name = application.Database,
                 Group = "Database"
             };
-            _nodesCollection.InsertOne(databaseNode);
+            if (_nodesCollection.Find(n => n.Name == databaseNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(databaseNode);
+            }
 
             //frontend framework node
             Node frontendFrameworkNode = new Node
@@ -108,9 +111,13 @@ namespace Api.Controllers
                 Name = application.FrontendFramework,
                 Group = "Frontend Framework"
             };
-            _nodesCollection.InsertOne(frontendFrameworkNode);
+            if (_nodesCollection.Find(n => n.Name == frontendFrameworkNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(frontendFrameworkNode);
+            }
+            
 
-
+            //database link
             Link applicationToDatabaseLink = new Link
             {
                 Source = application.Name,
@@ -118,6 +125,15 @@ namespace Api.Controllers
                 Value = 1
             };
             _linksCollection.InsertOne(applicationToDatabaseLink);
+
+            //frontend framework link
+            Link applicationToFrontendFrameworkLink = new Link
+            {
+                Source = application.Name,
+                Target = application.FrontendFramework,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToFrontendFrameworkLink);
 
             _applicationsCollection.InsertOne(application);
             return CreatedAtAction(nameof(GetApplicationByName), new { name = application.Name }, application);
