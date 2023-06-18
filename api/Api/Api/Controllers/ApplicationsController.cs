@@ -131,12 +131,26 @@ namespace Api.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                //compare what have been changed between application and updatedApplication
+                if (application.Database != updatedApplication.Database)
+                {
+                    var linkfilter = Builders<Link>.Filter.Eq("Source", name);
+                    var linkUpdate = Builders<Link>.Update.Set("Target", updatedApplication.Database);
+                    _linksCollection.UpdateOne(linkfilter, linkUpdate);
+                }
+                
+            }
             
             
             var filter = Builders<ApplicationDetails>.Filter.Eq("Name", name); // Replace with your document's unique identifier
             var update = Builders<ApplicationDetails>.Update.Set("Database", updatedApplication.Database); // Replace with the field name and new value
             var result = _applicationsCollection.UpdateOne(filter, update); // UpdateOne updates a single document matching the filter
             
+
+            //todo: update links
+
 
             return Ok(result);
         }

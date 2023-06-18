@@ -10,6 +10,7 @@ import Device from "./Pages/Device";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
 import Application from "./components/application";
+import EditApplicationForm from "./components/editApplicationForm";
 
 const Pages = styled.div`
   width: 100vw;
@@ -42,6 +43,7 @@ function App() {
             <Route path="/devices" component={Devices} />
             <Route path="/device/:id" component={Device} />
             <Route path="/specific/:name" component={Application} />
+            <Route path="/applications/:name" component={EditApplicationForm} />
           </Switch>
         </AnimatePresence>
       </Pages>

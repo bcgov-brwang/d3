@@ -15,11 +15,17 @@ const DocumentsComponent = () => {
 
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleGoToChartClick = () => {
     // Perform any necessary actions before navigation
 
     // Navigate to the other page
     history.push(`/specific/${name}`);
+  };
+  const handleEditClick = () => {
+    // Perform any necessary actions before navigation
+
+    // Navigate to the other page
+    history.push(`/applications/${name}`);
   };
 
   useEffect(() => {
@@ -54,7 +60,9 @@ const DocumentsComponent = () => {
   return (
     <div className="scroll-panel">
       <h4>{application.name} details</h4>
-      <button onClick={handleClick}>Go to Chart</button>
+      <button onClick={handleGoToChartClick}>Go to Chart</button>
+      <br/>
+      <button onClick={handleEditClick}>Edit</button>
       <p>Name: {application.name}</p>
       <p>Database: {application.database}</p>
       <p>Frontend Framework: {application.frontendFramework}</p>
