@@ -56,5 +56,19 @@
   }
   
   /* Rest of the styles from the previous example... */
+
+  .legend {
+    display: flex;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  svg.legend g{
+    display: flex;
+  }
   
   
