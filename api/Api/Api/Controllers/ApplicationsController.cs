@@ -149,6 +149,115 @@ namespace Api.Controllers
                 _nodesCollection.InsertOne(backendLanguageNode);
             }
 
+            //host type node
+            Node hostTypeNode = new Node
+            {
+                Name = application.HostType,
+                Group = "Host Type"
+            };
+            if (_nodesCollection.Find(n => n.Name == hostTypeNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(hostTypeNode);
+            }
+
+            //cicd type node
+            Node cicdTypeNode = new Node
+            {
+                Name = application.CicdType,
+                Group = "CICD Type"
+            };
+            if (_nodesCollection.Find(n => n.Name == cicdTypeNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(cicdTypeNode);
+            }
+
+            //external apis node
+            Node externalApisNode = new Node
+            {
+                Name = application.ExternalApis,
+                Group = "External APIs"
+            };
+            if (_nodesCollection.Find(n => n.Name == externalApisNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(externalApisNode);
+            }
+
+            //exposed apis node
+            Node exposedApisNode = new Node
+            {
+                Name = application.ExposedApis,
+                Group = "Exposed APIs"
+            };
+            if (_nodesCollection.Find(n => n.Name == exposedApisNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(exposedApisNode);
+            }
+
+            //stakeholders node
+            Node stakeholdersNode = new Node
+            {
+                Name = application.StakeHolders,
+                Group = "Stakeholders"
+            };
+            if (_nodesCollection.Find(n => n.Name == stakeholdersNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(stakeholdersNode);
+            }
+
+            //tech contacts node
+            Node techContactsNode = new Node
+            {
+                Name = application.TechContacts,
+                Group = "Tech Contacts"
+            };
+            if (_nodesCollection.Find(n => n.Name == techContactsNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(techContactsNode);
+            }
+
+            //release date node
+            Node releaseDateNode = new Node
+            {
+                Name = application.ReleaseDate,
+                Group = "Release Date"
+            };
+            if (_nodesCollection.Find(n => n.Name == releaseDateNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(releaseDateNode);
+            }
+
+            //host servers node
+            Node hostServersNode = new Node
+            {
+                Name = application.HostServers,
+                Group = "Host Servers"
+            };
+            if (_nodesCollection.Find(n => n.Name == hostServersNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(hostServersNode);
+            }
+
+            //database servers node
+            Node databaseServersNode = new Node
+            {
+                Name = application.DatabaseServers,
+                Group = "Database Servers"
+            };
+            if (_nodesCollection.Find(n => n.Name == databaseServersNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(databaseServersNode);
+            }
+
+            //current version node
+            Node currentVersionNode = new Node
+            {
+                Name = application.CurrentVersion,
+                Group = "Current Version"
+            };
+            if (_nodesCollection.Find(n => n.Name == currentVersionNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(currentVersionNode);
+            }
 
             //database link
             Link applicationToDatabaseLink = new Link
@@ -196,6 +305,98 @@ namespace Api.Controllers
                 Value = 1
             };
             _linksCollection.InsertOne(applicationToBackendLanguageLink);
+
+            //host type link
+            Link applicationToHostTypeLink = new Link
+            {
+                Source = application.Name,
+                Target = application.HostType,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToHostTypeLink);
+
+            //cicd type link
+            Link applicationToCicdTypeLink = new Link
+            {
+                Source = application.Name,
+                Target = application.CicdType,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToCicdTypeLink);
+
+            //external apis link
+            Link applicationToExternalApisLink = new Link
+            {
+                Source = application.Name,
+                Target = application.ExternalApis,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToExternalApisLink);
+
+            //exposed apis link
+            Link applicationToExposedApisLink = new Link
+            {
+                Source = application.Name,
+                Target = application.ExposedApis,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToExposedApisLink);
+
+            //stakeholders link
+            Link applicationToStakeholdersLink = new Link
+            {
+                Source = application.Name,
+                Target = application.StakeHolders,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToStakeholdersLink);
+
+            //tech contacts link
+            Link applicationToTechContactsLink = new Link
+            {
+                Source = application.Name,
+                Target = application.TechContacts,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToTechContactsLink);
+
+            //release date link
+            Link applicationToReleaseDateLink = new Link
+            {
+                Source = application.Name,
+                Target = application.ReleaseDate,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToReleaseDateLink);
+
+            //host servers link
+            Link applicationToHostServersLink = new Link
+            {
+                Source = application.Name,
+                Target = application.HostServers,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToHostServersLink);
+
+            //database servers link
+            Link applicationToDatabaseServersLink = new Link
+            {
+                Source = application.Name,
+                Target = application.DatabaseServers,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToDatabaseServersLink);
+
+            //current version link
+            Link applicationToCurrentVersionLink = new Link
+            {
+                Source = application.Name,
+                Target = application.CurrentVersion,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToCurrentVersionLink);
+
+
 
             _applicationsCollection.InsertOne(application);
             return CreatedAtAction(nameof(GetApplicationByName), new { name = application.Name }, application);
