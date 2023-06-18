@@ -115,7 +115,40 @@ namespace Api.Controllers
             {
                 _nodesCollection.InsertOne(frontendFrameworkNode);
             }
-            
+
+            //frontend language node
+            Node frontendLanguageNode = new Node
+            {
+                Name = application.FrontendLanguage,
+                Group = "Frontend Language"
+            };
+            if (_nodesCollection.Find(n => n.Name == frontendLanguageNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(frontendLanguageNode);
+            }
+
+            //backend framework node
+            Node backendFrameworkNode = new Node
+            {
+                Name = application.BackendFramework,
+                Group = "Backend Framework"
+            };
+            if (_nodesCollection.Find(n => n.Name == backendFrameworkNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(backendFrameworkNode);
+            }
+
+            //backend language node
+            Node backendLanguageNode = new Node
+            {
+                Name = application.BackendLanguage,
+                Group = "Backend Language"
+            };
+            if (_nodesCollection.Find(n => n.Name == backendLanguageNode.Name).ToList().Count == 0)
+            {
+                _nodesCollection.InsertOne(backendLanguageNode);
+            }
+
 
             //database link
             Link applicationToDatabaseLink = new Link
@@ -134,6 +167,35 @@ namespace Api.Controllers
                 Value = 1
             };
             _linksCollection.InsertOne(applicationToFrontendFrameworkLink);
+
+            //frontend language link
+            Link applicationToFrontendLanguageLink = new Link
+            {
+                Source = application.Name,
+                Target = application.FrontendLanguage,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToFrontendLanguageLink);
+
+
+
+            //backend framework link
+            Link applicationToBackendFrameworkLink = new Link
+            {
+                Source = application.Name,
+                Target = application.BackendFramework,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToBackendFrameworkLink);
+
+            //backend language link
+            Link applicationToBackendLanguageLink = new Link
+            {
+                Source = application.Name,
+                Target = application.BackendLanguage,
+                Value = 1
+            };
+            _linksCollection.InsertOne(applicationToBackendLanguageLink);
 
             _applicationsCollection.InsertOne(application);
             return CreatedAtAction(nameof(GetApplicationByName), new { name = application.Name }, application);
@@ -187,11 +249,26 @@ namespace Api.Controllers
             //delete application
             var result = _applicationsCollection.DeleteOne(b => b.Name == name);
 
+
+            var relatedLinks = _linksCollection.Find(l => l.Source == name).ToList();
+            foreach (var link in relatedLinks)
+            {
+                var otherApplicationLink = _linksCollection.Find(l => l.Source != name && l.Target == link.Target).FirstOrDefault();
+                if (otherApplicationLink == null)
+                {
+                    _nodesCollection.DeleteOne(n => n.Name == link.Target);
+                }
+            }
+
             //delete links
             _linksCollection.DeleteMany(l => l.Source == name || l.Target == name);
 
             //delete node
             _nodesCollection.DeleteOne(n => n.Name == name);
+
+            
+
+            
 
             if (result.DeletedCount == 0)
             {
