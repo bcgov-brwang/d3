@@ -28,6 +28,22 @@ const DocumentsComponent = () => {
     history.push(`/applications/${name}`);
   };
 
+  const handleDeleteClick = () => {
+    try {
+      const urlDelete = `https://localhost:44339/api/applications/${name}`;
+      const response = fetch(urlDelete, {
+      method: 'Delete', // Assuming you use the PUT method to update the application
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+  }
+  catch (error) {
+    console.error('Error deleting application:', error);
+  }
+}
+
+
   useEffect(() => {
     const fetchApplicationDetails = async () => {
       try {
@@ -63,6 +79,8 @@ const DocumentsComponent = () => {
       <button onClick={handleGoToChartClick}>Go to Chart</button>
       <br/>
       <button onClick={handleEditClick}>Edit</button>
+      <br/>
+      <button onClick={handleDeleteClick}>Delete</button>
       <p>Name: {application.name}</p>
       <p>Database: {application.database}</p>
       <p>Frontend Framework: {application.frontendFramework}</p>

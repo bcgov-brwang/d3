@@ -101,6 +101,16 @@ namespace Api.Controllers
                 Group = "Database"
             };
             _nodesCollection.InsertOne(databaseNode);
+
+            //frontend framework node
+            Node frontendFrameworkNode = new Node
+            {
+                Name = application.FrontendFramework,
+                Group = "Frontend Framework"
+            };
+            _nodesCollection.InsertOne(frontendFrameworkNode);
+
+
             Link applicationToDatabaseLink = new Link
             {
                 Source = application.Name,
@@ -158,7 +168,15 @@ namespace Api.Controllers
         [HttpDelete("{name}")]
         public IActionResult DeleteApplication(string name)
         {
+            //delete application
             var result = _applicationsCollection.DeleteOne(b => b.Name == name);
+
+            //delete links
+            _linksCollection.DeleteMany(l => l.Source == name || l.Target == name);
+
+            //delete node
+            _nodesCollection.DeleteOne(n => n.Name == name);
+
             if (result.DeletedCount == 0)
             {
                 return NotFound();
