@@ -58,6 +58,32 @@
     background-color: #45a049;
   }
 
+  .scroll-panel .form-container button.goToChart {
+    background-color: #6b9df3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .scroll-panel .form-container button.goToChart:hover {
+    background-color: #6b9df3;
+  }
+
+  .scroll-panel .form-container button.delete {
+    background-color: #ee1a24;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .scroll-panel .form-container button.delete:hover {
+    background-color: #ee1a24;
+  }
+
   .scroll-panel {
     max-height: 350px; /* Adjust the height as needed */
     overflow: auto;

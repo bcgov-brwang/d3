@@ -76,12 +76,13 @@ const DocumentsComponent = () => {
 
   return (
     <div className="scroll-panel">
+      <div className="form-container">
       <h4>{application.name} details</h4>
-      <button onClick={handleGoToChartClick}>Go to Chart</button>
+      <button className="goToChart" onClick={handleGoToChartClick}>Go to Chart</button>
       <br/>
-      <button onClick={handleEditClick}>Edit</button>
+      <button className="edit" onClick={handleEditClick}>Edit</button>
       <br/>
-      <button onClick={handleDeleteClick}>Delete</button>
+      <button className="delete" onClick={handleDeleteClick}>Delete</button>
       <p>Name: {application.name}</p>
       <p>Database: {application.database}</p>
       <p>Frontend Framework: {application.frontendFramework}</p>
@@ -98,6 +99,7 @@ const DocumentsComponent = () => {
       <p>Host Servers: {application.hostServers}</p>
       <p>Database Servers: {application.databaseServers}</p>
       <p>Current Version: {application.currentVersion}</p>
+      </div>
     </div>
   );
   
