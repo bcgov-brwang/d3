@@ -14,7 +14,7 @@
   }
 
   .form-container {
-    width: 300px;
+    width: 80vw;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -30,10 +30,19 @@
   .form-container input[type="email"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    /* border: 1px solid #ccc; */
+    border-radius: 0px;
     box-sizing: border-box;
     margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #000; /* Customize the line color here */
+  }
+
+  
+  .form-container input:focus{
+    border: none;
+    border-bottom: 2px solid #000;
+    outline: none;
   }
   
   .scroll-panel .form-container button {
@@ -50,7 +59,7 @@
   }
 
   .scroll-panel {
-    max-height: 300px; /* Adjust the height as needed */
+    max-height: 350px; /* Adjust the height as needed */
     overflow: auto;
     padding-right: 10px; /* Add right padding to account for the scrollbar */
   }
@@ -70,5 +79,42 @@
   svg.legend g{
     display: flex;
   }
+
+  .dropdown-select {
+    border: none;
+    border-bottom: 1px solid #000; /* Customize the line color here */
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+    
+  }
+
+  .dropdown-select.open select {
+    display: none;
+
+  }
+
+  .dropdown-select.open .selected-options {
+    display: none;
+
+  }
+
+  .dropdown-select.open .selected-options {
+    display: block;
+
+  }
+
+  selected-options.optionOpen {
+    display: block;
+  }
+
+  selected-options.optionHide {
+    display: none;
+  }
   
-  
+  .dropdown-select .selected-options .placeholder {
+    display: none;
+
+  }
+
