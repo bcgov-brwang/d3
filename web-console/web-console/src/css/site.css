@@ -144,3 +144,15 @@
 
   }
 
+  table {
+    /* background-color: #45a049; */
+    width: 100%;
+    overflow-x: auto;
+    margin-left: 100px;
+
+  }
+
+  table tbody tr td {
+    height: 140px;
+  }
+

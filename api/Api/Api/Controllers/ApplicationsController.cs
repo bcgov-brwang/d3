@@ -61,6 +61,46 @@ namespace Api.Controllers
             
         }
 
+        [HttpGet("PieChart")]
+        public PieChartData GetPieChartData(string name)
+        {
+            PieChartData result = null;
+            result = new PieChartData
+            {
+                frontendFrameworkData = new List<FrontendFrameworkData>
+                {
+                    new FrontendFrameworkData
+                    {
+                        Name = "React",
+                        Value = "10"
+                    },
+                    new FrontendFrameworkData
+                    { 
+                        Name = "Vue",
+                        Value = "5"
+                    }
+                },
+                backendFrameworkData = new List<BackendFrameworkData>
+                {
+                    new BackendFrameworkData
+                    {
+                        Name = "ASP.NET Core",
+                        Value = "3"
+                    },
+                    new BackendFrameworkData
+                    {
+                        Name = "Nest.js",
+                        Value = "7"
+                    }
+                },
+            };
+            
+
+            return result;
+
+        }
+
+
         [HttpGet]
         public ActionResult<IEnumerable<ApplicationDetails>> GetAllApplications()
         {

@@ -1,17 +1,8 @@
-// import MotionHoc from "../Pages/MotionHoc";
-// import "../tools/1.js";
-
-// const ApplicationComponent = () => {
-//   return <h1>Application</h1>;
-// };
-
-// const Application = MotionHoc(ApplicationComponent);
-
-// export default Application;
-
 import React, {useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 import loadData from "../tools/d3.js";
+import loadPieData from "../tools/d3pie.js";
+import loadBarData from "../tools/d3bar.js";
 import "../css/site.css"
 
 const Application = () => {
@@ -21,7 +12,7 @@ const Application = () => {
 
   const legendStyles = {
         marginLeft: '80px',
-        marginTop: '250px',
+        marginTop: '-100px',
       };
 
   const chartRef = useRef(null);
@@ -56,7 +47,45 @@ const Application = () => {
       }
     };
 
+    const fetchBarData = async () => {
+      try {
+        let url = "";
+        url = "https://localhost:44339/api/applications/piechart";
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const jsonData = await response.json();
+        
+        loadBarData(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+      
+
+    }
+
+    const fetchPieData = async () => {
+      try {
+        let url = "";
+        url = "https://localhost:44339/api/applications/piechart";
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const jsonData = await response.json();
+        
+        loadPieData(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+      
+
+    }
+
     fetchData();
+    fetchPieData();
+    fetchBarData();
     
   }, []);
 
@@ -64,7 +93,23 @@ const Application = () => {
     <div>
         {/* <h1>Application Details</h1> */}
         <div id="legend" style={legendStyles}><h4>Legend</h4></div>
-        <svg width="960" height="600"></svg>
+        <svg width="960" height="300"></svg>
+        <div>
+          <table>
+            <tbody>
+             <tr>
+              <td id="frontendFramework">
+                test 1
+              </td>
+              <td id="backendFramework">
+                test 2
+              </td>
+            </tr>
+
+            </tbody>
+
+          </table>
+        </div>
     </div>
   );
 };
