@@ -5,7 +5,7 @@ import User from "./Pages/User";
 import Calender from "./Pages/Calender";
 import Documents from "./Pages/Documents";
 import Projects from "./Pages/Projects";
-import Devices from "./Pages/Devices";
+import ApplicationList from "./Pages/ApplicationList";
 import Device from "./Pages/Device";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
@@ -40,7 +40,7 @@ function App() {
             <Route path="/calender" component={Calender} />
             <Route path="/documents" component={Documents} />
             <Route path="/projects" component={Projects} />
-            <Route path="/devices" component={Devices} />
+            <Route path="/devices" component={ApplicationList} />
             <Route path="/device/:id" component={Device} />
             <Route path="/specific/:name" component={Application} />
             <Route path="/applications/:name" component={EditApplicationForm} />
