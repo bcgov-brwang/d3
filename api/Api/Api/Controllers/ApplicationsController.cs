@@ -61,6 +61,190 @@ namespace Api.Controllers
             
         }
 
+        [HttpGet("BarChartTest")]
+        public BarChartData GetBarChartDataTest(string name)
+        {
+            BarChartData result = null;
+            result = new BarChartData
+            {
+                alphabetData = new List<AlphabetData>
+                {
+
+                    new AlphabetData
+                    {
+                        Letter = "Nest.js",
+                        Frequency = 0.08167
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "ASP.NET Core",
+                        Frequency = 0.01492
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "Django",
+                        Frequency = 0.02451
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "Springboots",
+                        Frequency = 0.01143
+                    }
+                }
+            };
+            return result;
+        }
+            
+
+
+        [HttpGet("BarChart")]
+        public BarChartData GetBarChartData(string name)
+        {
+            BarChartData result = null;
+            result = new BarChartData
+            {
+                alphabetData = new List<AlphabetData>
+                {
+
+                    new AlphabetData
+                    {
+                        Letter = "A",
+                        Frequency = 0.08167
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "B",
+                        Frequency = 0.01492
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "C",
+                        Frequency = 0.02782
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "D",
+                        Frequency = 0.04253
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "E",
+                        Frequency = 0.12702
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "F",
+                        Frequency = 0.02288
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "G",
+                        Frequency = 0.02015
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "H",
+                        Frequency = 0.06094
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "I",
+                        Frequency = 0.06966
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "J",
+                        Frequency = 0.00153
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "K",
+                        Frequency = 0.00772
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "L",
+                        Frequency = 0.04025
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "M",
+                        Frequency = 0.02406
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "N",
+                        Frequency = 0.06749
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "O",
+                        Frequency = 0.07507
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "P",
+                        Frequency = 0.01929
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "Q",
+                        Frequency = 0.00095
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "R",
+                        Frequency = 0.05987
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "S",
+                        Frequency = 0.06327
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "T",
+                        Frequency = 0.09056
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "U",
+                        Frequency = 0.02758
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "V",
+                        Frequency = 0.00978
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "W",
+                        Frequency = 0.0236
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "X",
+                        Frequency = 0.0015
+                    },
+                                        new AlphabetData
+                    {
+                        Letter = "Y",
+                        Frequency = 0.01974
+                    },
+                    new AlphabetData
+                    {
+                        Letter = "Z",
+                        Frequency = 0.00074
+                    }
+
+                }
+            };
+            
+
+            return result;
+
+        }
+
         [HttpGet("PieChart")]
         public PieChartData GetPieChartData(string name)
         {
@@ -75,7 +259,7 @@ namespace Api.Controllers
                         Value = "10"
                     },
                     new FrontendFrameworkData
-                    { 
+                    {
                         Name = "Vue",
                         Value = "5"
                     }
@@ -94,11 +278,12 @@ namespace Api.Controllers
                     }
                 },
             };
-            
+
 
             return result;
 
         }
+
 
 
         [HttpGet]

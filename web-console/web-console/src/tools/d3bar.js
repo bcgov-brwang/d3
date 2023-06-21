@@ -1,81 +1,205 @@
 import * as d3 from 'd3';
 
 
+
 const loadBarData = (data) => {
-  // d3.csv("pie.json").then((data) => {
-
-      // const data = jsonObject["frontend"];
-
-    // Specify the chart’s dimensions.
-    const width = 150;
-    const height = Math.min(width, 150);
+  
+    const width = 1500;
+    const height = Math.min(width, 500);
   
     // Create the color scale.
     const color = d3.scaleOrdinal()
-        .domain(data.backendFrameworkData.map(d => d.name))
-        .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), data.backendFrameworkData.length).reverse())
+        .domain(data.alphabetData.map(d => d.name))
+        .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), data.alphabetData.length).reverse())
   
     //bruce test
     const centerX = width / 2;
     const centerY = height / 2;
-    var svg = d3.select("#backendFramework")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("viewBox", [-width / 2, -height / 2, width, height])
-    // .attr("transform", `translate(${centerX}, ${centerY})`)
-    .attr("style", "max-width: 100%; height: auto;");
+
+    const alphabet = data.alphabetData;
+
+    const chart = BarChart(alphabet, {
+      x: d => d.letter,
+      y: d => d.frequency,
+      yFormat: "%",
+      yLabel: "↑ Frequency",
+      width,
+      height: 500,
+      color: "steelblue",
+      duration: 750 // slow transition for demonstration
+    });
     
-  
-    // Create the pie layout and arc generator.
-    const pie = d3.pie()
-      .sort(null)
-      .value(d => d.value);
-  
-    const arcs = pie(data.backendFrameworkData);
-  
-    const arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(Math.min(width, height) / 2 - 1);
-  
-    // // Create the SVG container.
-    // const svg = d3.create("svg")
-    //     .attr("viewBox", [-width / 2, -height / 2, width, height]);
-  
-    // Add a sector path for each value.
-    svg.append("g")
-        .attr("stroke", "white")
-      .selectAll("path")
-      .data(arcs)
-      .join("path")
-        .attr("fill", d => color(d.data.name))
-        .attr("d", arc)
-      .append("title")
-        .text(d => `${d.data.name}: ${d.data.value.toLocaleString("en-US")}`);
-  
-    // Create a new arc generator to place a label close to the edge.
-    // The label shows the value if there is enough room.
-    const labelRadius = arc.outerRadius()() * 0.8;
-    const arcLabel = d3.arc().innerRadius(labelRadius).outerRadius(labelRadius);
-    svg.append("g")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", 12)
-        .attr("text-anchor", "middle")
-      .selectAll("text")
-      .data(arcs)
-      .join("text")
-        .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
-        .call(text => text.append("tspan")
-            .attr("y", "-0.4em")
-            .attr("font-weight", "bold")
-            .text(d => d.data.name))
-        .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
-            .attr("x", 0)
-            .attr("y", "0.7em")
-            .attr("fill-opacity", 0.7)
-            .text(d => d.data.value.toLocaleString("en-US")));
 
+    d3.select("#barChart")
+  .node()
+  .appendChild(chart);
+    
 
+}
+
+// Copyright 2021 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/sortable-bar-chart
+function BarChart(data, {
+  x = (d, i) => i, // given d in data, returns the (ordinal) x-value
+  y = d => d, // given d in data, returns the (quantitative) y-value
+  marginTop = 20, // the top margin, in pixels
+  marginRight = 0, // the right margin, in pixels
+  marginBottom = 30, // the bottom margin, in pixels
+  marginLeft = 40, // the left margin, in pixels
+  width = 640, // the outer width of the chart, in pixels
+  height = 400, // the outer height of the chart, in pixels
+  xDomain, // an array of (ordinal) x-values
+  xRange = [marginLeft, width - marginRight], // [left, right]
+  yType = d3.scaleLinear, // type of y-scale
+  yDomain, // [ymin, ymax]
+  yRange = [height - marginBottom, marginTop], // [bottom, top]
+  xPadding = 0.1, // amount of x-range to reserve to separate bars
+  yFormat, // a format specifier string for the y-axis
+  yLabel, // a label for the y-axis
+  color = "currentColor", // bar fill color
+  duration: initialDuration = 250, // transition duration, in milliseconds
+  delay: initialDelay = (_, i) => i * 20 // per-element transition delay, in milliseconds
+} = {}) {
+  // Compute values.
+  const X = d3.map(data, x);
+  const Y = d3.map(data, y);
+
+  // Compute default domains, and unique the x-domain.
+  if (xDomain === undefined) xDomain = X;
+  if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+  xDomain = new d3.InternSet(xDomain);
+
+  // Omit any data not present in the x-domain.
+  const I = d3.range(X.length).filter(i => xDomain.has(X[i]));
+
+  // Construct scales, axes, and formats.
+  const xScale = d3.scaleBand(xDomain, xRange).padding(xPadding);
+  const yScale = yType(yDomain, yRange);
+  const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
+  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
+  const format = yScale.tickFormat(100, yFormat);
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      // .attr("viewBox", [-100, -150, width, height])
+      .attr("viewBox", [-100, -250, 2500, 800])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+  const yGroup = svg.append("g")
+      .attr("transform", `translate(${marginLeft},0)`)
+      .call(yAxis)
+      .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll(".tick").call(grid))
+      .call(g => g.append("text")
+          .attr("x", -marginLeft)
+          .attr("y", 10)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text(yLabel));
+
+  let rect = svg.append("g")
+      .attr("fill", color)
+    .selectAll("rect")
+    .data(I)
+    .join("rect")
+      .property("key", i => X[i]) // for future transitions
+      .call(position, i => xScale(X[i]), i => yScale(Y[i]))
+      .style("mix-blend-mode", "multiply")
+      .call(rect => rect.append("title")
+          .text(i => [X[i], format(Y[i])].join("\n")));
+
+  const xGroup = svg.append("g")
+      .attr("transform", `translate(0,${height - marginBottom})`)
+      .call(xAxis);
+
+  // A helper method for updating the position of bars.
+  function position(rect, x, y) {
+    return rect
+        .attr("x", x)
+        .attr("y", y)
+        .attr("height", typeof y === "function" ? i => yScale(0) - y(i) : i => yScale(0) - y)
+        .attr("width", xScale.bandwidth());
+  }
+
+  // A helper method for generating grid lines on the y-axis.
+  function grid(tick) {
+    return tick.append("line")
+        .attr("class", "grid")
+        .attr("x2", width - marginLeft - marginRight)
+        .attr("stroke", "currentColor")
+        .attr("stroke-opacity", 0.1);
+  }
+
+  // Call chart.update(data, options) to transition to new data.
+  return Object.assign(svg.node(), {
+    update(data, {
+      xDomain, // an array of (ordinal) x-values
+      yDomain, // [ymin, ymax]
+      duration = initialDuration, // transition duration, in milliseconds
+      delay = initialDelay // per-element transition delay, in milliseconds
+    } = {}) {
+      // Compute values.
+      const X = d3.map(data, x);
+      const Y = d3.map(data, y);
+
+      // Compute default domains, and unique the x-domain.
+      if (xDomain === undefined) xDomain = X;
+      if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+      xDomain = new d3.InternSet(xDomain);
+
+      // Omit any data not present in the x-domain.
+      const I = d3.range(X.length).filter(i => xDomain.has(X[i]));
+
+      // Update scale domains.
+      xScale.domain(xDomain);
+      yScale.domain(yDomain);
+
+      // Start a transition.
+      const t = svg.transition().duration(duration);
+
+      // Join the data, applying enter and exit.
+      rect = rect
+          .data(I, function(i) { return this.tagName === "rect" ? this.key : X[i]; })
+          .join(
+            enter => enter.append("rect")
+                .property("key", i => X[i]) // for future transitions
+                .call(position, i => xScale(X[i]), yScale(0))
+                .style("mix-blend-mode", "multiply")
+                .call(enter => enter.append("title")),
+            update => update,
+            exit => exit.transition(t)
+                .delay(delay)
+                .attr("y", yScale(0))
+                .attr("height", 0)
+                .remove()
+          );
+
+      // Update the title text on all entering and updating bars.
+      rect.select("title")
+          .text(i => [X[i], format(Y[i])].join("\n"));
+
+      // Transition entering and updating bars to their new position. Note
+      // that this assumes that the input data and the x-domain are in the
+      // same order, or else the ticks and bars may have different delays.
+      rect.transition(t)
+          .delay(delay)
+          .call(position, i => xScale(X[i]), i => yScale(Y[i]));
+
+      // Transition the x-axis (using a possibly staggered delay per tick).
+      xGroup.transition(t)
+          .call(xAxis)
+          .call(g => g.selectAll(".tick").delay(delay));
+
+      // Transition the y-axis, then post process for grid lines etc.
+      yGroup.transition(t)
+          .call(yAxis)
+        .selection()
+          .call(g => g.select(".domain").remove())
+          .call(g => g.selectAll(".tick").selectAll(".grid").data([,]).join(grid));
+    }
+  });
 }
 
 export default loadBarData;
