@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 //All the svg files
-import logo from "../assets/moti-iot-5.svg";
+import logo from "../assets/moti.png";
 import Home from "../assets/home-solid.svg";
 import User from "../assets/social.svg";
 import Calender from "../assets/sceduled.svg";
@@ -78,10 +78,10 @@ const SidebarContainer = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 4rem;
+  width: 3rem;
 
   img {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 `;
