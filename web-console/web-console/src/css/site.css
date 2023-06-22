@@ -156,3 +156,11 @@
     height: 140px;
   }
 
+  .listTableContainer table{
+    margin-left: -100px;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+

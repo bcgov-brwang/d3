@@ -57,7 +57,10 @@ const EditApplicationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <h1>Edit Application</h1>
+      <div className='scroll-panel'>
+    <form className="form-container" onSubmit={handleSubmit}>
       <label>
         Name:
         <input
@@ -67,9 +70,8 @@ const EditApplicationForm = () => {
           onChange={handleInputChange}
         />
       </label>
-      {/* Render other properties similarly */}
       <label>
-        Name:
+        Database:
         <input
           type="text"
           name="database"
@@ -77,8 +79,65 @@ const EditApplicationForm = () => {
           onChange={handleInputChange}
         />
       </label>
+      <label>
+        Frontend Framework:
+        <input
+          type="text"
+          name="frontendFramework"
+          value={updatedApplication.frontendFramework || application.frontendFramework || ''}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label>
+        Frontend Language:
+        <input
+          type="text"
+          name="frontendLanguage"
+          value={updatedApplication.frontendLanguage || application.frontendLanguage || ''}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label>
+        Backend Framework:
+        <input
+          type="text"
+          name="backendFramework"
+          value={updatedApplication.backendFramework || application.backendFramework || ''}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label>
+        Backend Language:
+        <input
+          type="text"
+          name="backendLanguage"
+          value={updatedApplication.backendLanguage || application.backendLanguage || ''}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label>
+        Host Type:
+        <input
+          type="text"
+          name="hostType"
+          value={updatedApplication.hostType || application.hostType || ''}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label>
+        CICD Type:
+        <input
+          type="text"
+          name="cicdType"
+          value={updatedApplication.cicdType || application.cicdType || ''}
+          onChange={handleInputChange}
+        />
+      </label>
       <button type="submit">Update</button>
     </form>
+    </div>
+    </div>
+    
   );
 };
 
