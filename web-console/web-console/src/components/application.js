@@ -99,10 +99,10 @@ const Application = () => {
             <tbody>
              <tr>
               <td id="frontendFramework">
-                test 1
+                
               </td>
               <td id="backendFramework">
-                test 2
+                
               </td>
             </tr>
 

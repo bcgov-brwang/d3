@@ -164,3 +164,10 @@
     white-space: nowrap;
   }
 
+  .button-container {
+    display: flex;
+  }
+  
+  .button-container button {
+    margin-right: 10px; /* Add some spacing between buttons */
+  }

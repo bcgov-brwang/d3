@@ -77,12 +77,17 @@ const DocumentsComponent = () => {
   return (
     <div className="scroll-panel">
       <div className="form-container">
+
       <h4>{application.name} details</h4>
+      <div className="button-container">
       <button className="goToChart" onClick={handleGoToChartClick}>Go to Chart</button>
       <br/>
       <button className="edit" onClick={handleEditClick}>Edit</button>
       <br/>
       <button className="delete" onClick={handleDeleteClick}>Delete</button>
+
+      </div>
+      
       <p>Name: {application.name}</p>
       <p>Database: {application.database}</p>
       <p>Frontend Framework: {application.frontendFramework}</p>
